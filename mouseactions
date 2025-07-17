@@ -1,0 +1,46 @@
+package LearningActions;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class HandlingMouseActions {
+
+	public static void main(String[] args) {
+
+		WebDriver driver = new ChromeDriver();
+
+		driver.get("https://demowebshop.tricentis.com/");
+
+		// 1.create an Instance for Actions Class
+		Actions actionobj = new Actions(driver);
+
+		// 2.Call the Non Static method, To perform Specific Actions
+
+		WebElement element = driver.findElement(By.xpath("//ul[@class='top-menu']/li/a[@href='/computers']"));
+
+		actionobj.moveToElement(element).perform();
+
+		//actionobj.contextClick();
+
+		actionobj.doubleClick().perform();
+
+		//actionobj.click().perform();
+
+		driver.get("http://www.dhtmlgoodies.com/scripts/drag-drop-custom/demo-drag-drop-3.html");
+		
+		
+		WebElement dragelement = driver.findElement(By.id("box6"));
+		
+		WebElement dropelement = driver.findElement(By.id("box106"));
+		
+		actionobj.dragAndDrop(dragelement, dropelement).perform();
+		
+		//actionobj.clickAndHold(dragelement).release(dropelement).perform();
+		
+		
+	}
+
+}
